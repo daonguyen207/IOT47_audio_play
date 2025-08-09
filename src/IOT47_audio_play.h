@@ -87,7 +87,7 @@ static void taskAudio(void *arg)
   vTaskDelete(NULL);
 }
 
-void IOT47_audio_init()
+void IOT47_audio_init(int audio_pin)
 {
   i2s_pin_config_t i2s_pdm_pins = {
   // no bck for PDM
@@ -96,7 +96,7 @@ void IOT47_audio_init()
   // as these are normally not connected
   .ws_io_num = 2,
   // where should we send the PDM data
-  .data_out_num = 1,
+  .data_out_num = audio_pin,
   // no data to read
   .data_in_num = I2S_PIN_NO_CHANGE
   };
@@ -134,5 +134,6 @@ void IOT47_audio_set_volume(int volume)
 {
 	audio_level = volume;
 }
+
 
 #endif
