@@ -6,7 +6,7 @@
 void setup() 
 {
   Serial.begin(115200);
-  IOT47_audio_init(1); //xuất âm thanh ra chân 1
+  IOT47_audio_init(1); //xuất âm thanh ra chân 1 ( nên gọi hàm này đầu tiên trong setup để tránh nó vô hiệu hóa 1 số chân chức năng khác mà đã được khởi tạo bên trên)
 }
 
 void loop() 
@@ -25,5 +25,6 @@ void loop()
       Serial.printf("Set volum to %i\n",volume);
     }
 }
+
 
 
