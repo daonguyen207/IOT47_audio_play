@@ -6,12 +6,7 @@
 void setup() 
 {
   Serial.begin(115200);
-
-  Serial.print("Free Heap start: "); Serial.println(ESP.getFreeHeap());
-
   IOT47_audio_init();
-
-  Serial.print("Free Heap end: "); Serial.println(ESP.getFreeHeap());
 }
 
 void loop() 
@@ -20,7 +15,7 @@ void loop()
     {
        IOT47_mp3_play((uint8_t *)tieng_chuong,sizeof(tieng_chuong));
     }
-    if(Serial.available())
+    if(Serial.available()) //set volume (256 = nguyên bản) <256 sẽ bé hơn, >256 to hơn
     {
       delay(1);
       String s="";
@@ -30,3 +25,4 @@ void loop()
       Serial.printf("Set volum to %i\n",volume);
     }
 }
+
